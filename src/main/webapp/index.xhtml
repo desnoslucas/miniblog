@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: IN-SO-025
+  Date: 09/06/2019
+  Time: 19:18
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>mini blog</title>
+</h:head>
+
+<h:body>
+    <h1>Mini Blog</h1>
+    <h:form>
+        Tappez votre message:
+        <h:inputText id="inputMessageField" value="#{messageBean.content}"></h:inputText>
+        <div class="cont3">
+            <h:commandButton id="postMessageButton" value="Envoyer" action="#{messageBean.postMessage()}">
+                <f:ajax execute="@form" render="areaToRefresh"/>
+            </h:commandButton>
+        </div>
+
+    </h:form>
+
+    <table>
+        <c:forEach items="#{messageBean.messageList}" var="c">
+            <tr>
+                <td>#{c.content}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</h:body>
+
+</html>
